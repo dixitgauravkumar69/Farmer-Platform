@@ -1,0 +1,811 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* General nav bar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(35, 165, 80);
+    padding: 10px 20px; /* Padding around the navbar */
+    position: sticky; /* Keeps navbar fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Keeps it on top of other content */
+    border: 2px solid transparent; /* Transparent border for animation */
+    border-radius: 10px; /* For rounded corners */
+    animation: light-border 3s linear infinite; /* Add animation for light effect */
+}
+
+/* Keyframes for the light effect */
+@keyframes light-border {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                    0 0 30px rgba(255, 255, 255, 0.6),
+                    0 0 40px rgba(255, 255, 255, 0.7),
+                    0 0 50px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 30px rgba(255, 255, 255, 0.4),
+                    0 0 40px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Existing link styles */
+.nav-links a {
+    font-weight: bold;
+    color: #fff; /* Adjust color */
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Animation on hover */
+}
+
+/* Hover animation for logo */
+.logo img:hover {
+    transform: scale(1.1); /* Enlarge slightly on hover */
+}
+.blink
+{
+    animation: light-up-animation 3s ease-in-out infinite;
+}
+@keyframes light-up-animation {
+    0%, 100% {
+        opacity: 0.5; /* Dim */
+        filter: brightness(100%);
+    }
+    50% {
+        opacity: 1; /* Bright */
+        filter: brightness(150%); /* Glow effect */
+    }
+}
+
+/* Nav links styles */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    font-weight: 1000;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+/* Hover animation for nav links */
+.nav-links li a:hover {
+    background-color: #555;
+    transform: translateY(-5px); /* Slight lift on hover */
+    color: #ffcc00; /* Change color on hover */
+}
+
+/* Menu icon styles (for mobile view) */
+.menu-icon {
+    display: none;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Hover animation for menu icon */
+.menu-icon:hover span {
+    background-color: #ffcc00;
+    transform: rotate(15deg); /* Slight rotation on hover */
+}
+
+/* Add media queries to show the menu icon on smaller screens if necessary */
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+    
+    .nav-links {
+        display: none; /* Initially hide the links */
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: #333;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .menu-icon.active + .nav-links {
+        display: flex;
+    }
+    
+    .nav-links li a {
+        padding: 15px 0;
+        text-align: center;
+    }
+}
+.translate-icon {
+    margin-left: 20px;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+/* Animation on hover */
+.translate-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #4621d7;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    /* Show the menu icon on small screens */
+    .menu-icon {
+        display: flex;
+    }
+}
+
+/* Footer Styles */
+.footer {
+    background-color: rgb(35, 165, 80);
+    color: #fff;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 20px;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    color: #f9d342;
+    margin-bottom: 15px;
+    font-size: 22px;
+    transition: transform 0.3s ease;
+}
+
+.footer-section h2:hover {
+    transform: scale(1.1);
+}
+
+.footer-section p, .footer-section ul {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #aaa;
+    transition: transform 0.3s ease;
+}
+
+.footer-section p:hover, .footer-section ul:hover {
+    transform: scale(1.05);
+}
+
+.footer-section ul li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #f9d342;
+    transform: scale(1.1);
+}
+
+.social-icons a {
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+
+/* Main content */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Card container for image slideshow */
+.card {
+    width: 1400px;
+    height: 500px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.card img.active {
+    opacity: 1;
+}
+/* Card Container (c1) */
+.c1 {
+    display: flex;
+    gap: 160px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Individual Card (c2) */
+.c2 {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s, box-shadow 0.5s, perspective 0.5s ease-out;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    
+}
+
+/* Hover Animation - Smooth scaling and tilt effect */
+.c2:hover {
+    transform: scale(1.1) rotateY(10deg) rotateX(5deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Styling */
+.c2 img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Hover Effect on Image - Zoom effect */
+.c2:hover img {
+    transform: scale(1.1);
+}
+
+/* Card Description */
+.c2 .description {
+    padding: 15px;
+    transform-style: preserve-3d;
+}
+
+.c2 h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.c2 p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Hover Effect on Text - Color change */
+.c2:hover h3 {
+    color: #007BFF; /* Change to a blue color on hover */
+}
+
+/* Additional Hover Effect - Subtle lift animation */
+.c2:hover .description {
+    transform: translateZ(10px);
+
+
+    
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Navbar */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .menu-icon span {
+        background-color: white;
+        height: 3px;
+        width: 25px;
+        margin: 5px;
+        transition: 0.3s ease, transform 0.3s ease;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        padding: 10px;
+    }
+
+    .social-icons {
+        margin-top: 15px;
+    }
+
+    /* Image gallery */
+    .image-gallery {
+        width: 100%; /* Make the gallery responsive */
+    }
+}
+}
+.Rform-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease;
+  }
+  
+  .Rform-container h2 {
+    text-align: center;
+    color: #228B22;
+    margin-bottom: 20px;
+  }
+  .login-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 550px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-top: 10px;
+    margin-left: 500px;
+}
+
+.login-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.login-card h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-group button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.button-group a {
+    text-decoration: none;
+    display: block;
+}
+
+  
+  .usercard {
+    width: 300px;
+    height: 150px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 10px;
+    
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .usercard img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .usercard h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  .usercard:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    background-color: #f0f0f0; /* Change background color on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add deeper shadow on hover */
+  }
+  /* Modals */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+  }
+  
+  /* Profile container */
+.profile-info {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.profile-info p strong {
+    color: #555;
+}
+/* Form styles */
+.form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #228B22;
+    box-shadow: 0 0 8px rgba(34, 139, 34, 0.5);
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #228B22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #1e7b1e;
+    transform: scale(1.05);
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+    backdrop-filter: blur(5px); /* Apply blur effect */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 400px; /* Max width */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.logout-btn:hover {
+    background-color: #ff3333;
+}
+.buyer-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.buyer-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    animation-delay: 0.3s;
+}
+
+.buyer-card h2 {
+    color: #4CAF50;
+    margin: 0 0 10px;
+}
+
+.buyer-card p {
+    color: #777;
+    margin: 5px 0;
+}
+
+.buyer-card:hover {
+    transform: scale(1.1); /* Scale the card to 110% size */
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3); /* Enhance the shadow */
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

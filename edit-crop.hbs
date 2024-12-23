@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Crop</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Edit Crop</h1>
+    <form action="/market/buyer/edit-crop/{{buyer._id}}" method="POST">
+        <label for="buyerName">Buyer Name:</label>
+        <input type="text" name="buyerName" value="{{buyer.buyerName}}" required><br>
+
+        <label for="email">Email:</label>
+        <input type="string" name="email" value="{{buyer.email}}" required><br>
+
+        <label for="Buying_prefrence">Buying Prefrence:</label>
+        <input type="number" name="Buying_prefrence" value="{{buyer.Buying_prefrence}}" required><br>
+
+        <label for="contact">Contact:</label>
+        <textarea name="contact" required>{{buyer.contact}}</textarea><br>
+
+        <label for="address">Address:</label>
+        <input type="string" name="address" value="{{buyer.address}}" required><br>
+
+
+        <button type="submit">Update Buyer</button>
+    </form>
+</body>
+</html>

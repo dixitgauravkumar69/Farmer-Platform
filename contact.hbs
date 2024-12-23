@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Farmer Helper Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://www.shutterstock.com/image-vector/support-your-local-farmer-circular-600nw-2191709689.jpg" alt="Logo">
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/market">Marketplace</a></li>
+            <li><a href="/Scientific_Suggestion">Scientific-Suggestions</a></li>
+            <li><a href="/GovtS">Government-Schemes</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div class="translate-icon" id="google_translate_element"></div>
+        <div class="menu-icon" id="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form action="/submit_contact" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder=" " required>
+                <label for="name">Your Name:</label>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder=" " required>
+                <label for="email">Your Email:</label>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="subject" name="subject" placeholder=" " required>
+                <label for="subject">Subject:</label>
+            </div>
+
+            <div class="form-group">
+                <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                <label for="message">Message:</label>
+            </div>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="map-container">
+            <h2>Our Location</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345095977!2d144.9559233159049!3d-37.81720997975159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f9faff%3A0x2bb7b9d4f5af219!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1600395410272!5m2!1sen!2sau"
+                allowfullscreen aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        &copy; 2024 Farmer Helper Platform. All Rights Reserved.
+    </footer>
+
+    <script>
+         function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,ta,te,gu,kn,ml,pa,bn,mr,or,ur,as,ne,si',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Load Google Translate script
+    (function() {
+      var gt = document.createElement('script'); gt.type = 'text/javascript'; gt.async = true;
+      gt.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gt, s);
+    })(); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyer - Available Crops</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/farmer.css">
+  
+</head>
+<body>
+  <!-- Navigation Bar -->
+    <nav class="navbar">
+       <div class="logo">
+            <img src="https://www.shutterstock.com/image-vector/support-your-local-farmer-circular-600nw-2191709689.jpg" class="blink" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/buyer-landing">Home</a></li>
+            <li><a href="" class="view-btn">Profile</a></li>
+           
+           <li><a href="/market/buyer">Self_information</a></li>
+            <li><a href="/find-Crop">View_crop</a></li>
+            <li><a href="/logout"><button class="logout-btn">Logout</button></a></li>
+        </ul>
+    </nav>
+
+  <div>
+    <form action="/market/buyer/add-info" method="POST">
+        <h2>Upload_Information</h2>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+        </div>
+
+       <div class="form-group">
+          <label for="buyingPreference">Buying Preference:</label>
+          <input type="text" name="buyingPreference" required>
+      </div>
+      <div class="form-group">
+          <label for="buyingQuantity">Buying Quantity:</label>
+          <input type="text" name="buyingQuantity" required>
+      </div>
+
+      
+
+      <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea name="address" required></textarea>
+      </div>
+
+
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-animated">Add Requirment</button>
+            
+        </div>
+    </form>
+    <!-- Button to view crops -->
+    <button onclick="document.getElementById('infoTable').style.display='block'" class="btn btn-edit">View Your info</button>
+
+    <!-- List of Crops with Edit and Delete Options in a Table -->
+    <div id="infoTable" style="display:none;">
+        <h2>Your Information-</h2>
+        <table>
+           <table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            
+            <th>BuyingPreference</th>
+            <th>BuyingQuantity</th>
+            <th>Address</th>
+          
+        </tr>
+    </thead>
+    
+</table>
+    </div>
+</div>
+   <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Farmer's Hub. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

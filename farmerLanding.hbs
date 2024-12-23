@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Landing Page</title>
+    <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="css/farmer.css">
+
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+       <div class="logo">
+            <img src="https://www.shutterstock.com/image-vector/support-your-local-farmer-circular-600nw-2191709689.jpg" class="blink" alt="Logo">
+        </div>
+        <ul class="nav-links">
+             <li><a href="/farmer-landing">Home</a></li>
+            <li><a href="" class="view-btn">Profile</a></li>
+           
+           <li><a href="/market/farmer">Crop</a></li>
+            <li><a href="/find-buyer">Find-Buyer</a></li>
+            <li><a href="/logout"><button class="logout-btn">Logout</button></a></li>
+        </ul>
+    </nav>
+
+     <main class="main-content">
+        <!-- Card with image slideshow -->
+        <div class="card" id="imageCard">
+            <div class="overlay">
+                <h2>Explore Fresh Crops</h2>
+                <p>High-quality produce directly from farmers.</p>
+            </div>
+            <img src="https://png.pngtree.com/thumb_back/fh260/background/20241014/pngtree-picturesque-sunset-over-vibrant-farm-fields-with-rows-of-fresh-crops-image_16383933.jpg" class="active" alt="Image 1">
+            <img src="https://media.istockphoto.com/id/491267876/photo/cauliflower-plantation.jpg?b=1&s=612x612&w=0&k=20&c=llHvM15l90TuKxzShH03fgYD57dVT3cMaEOEAnqbXO8=" alt="Image 2">
+            <img src="https://i.pinimg.com/736x/00/ed/95/00ed9559581782185c21e055f80b2526.jpg" alt="Image 3">
+            <img src="https://img.freepik.com/premium-photo/portraitstyle-photo-farmer-developing-country-holding-valuable-crop-with-lush-inviting-background_875722-6339.jpg" alt="Image 4">
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Farmer's Hub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function logout() {
+            alert('Logging out...');
+            // Redirect to login page or perform logout
+            window.location.href = 'login.html';
+        }
+         // Slideshow functionality
+    let currentIndex = 0;
+    const images = document.querySelectorAll('#imageCard img');
+
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.classList.remove('active');
+            if (i === index) {
+                img.classList.add('active');
+            }
+        });
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length; // Cycle through images
+        showImage(currentIndex);
+    }
+
+    // Change image every 3 seconds
+    setInterval(nextImage, 3000); // Updated to 3000 milliseconds
+
+    </script>
+</body>
+</html>

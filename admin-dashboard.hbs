@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #007bff;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    a:active {
+      background-color: #004085;
+      transform: translateY(0);
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome, Admin</h1>
+    <p>Here you can manage the platform.</p>
+    <a href="/view-users">View Registered Users on Platform</a>
+  </div>
+
+</body>
+</html>

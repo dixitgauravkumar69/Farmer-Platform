@@ -1,0 +1,104 @@
+<!-- views/find-buyer.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Buyer</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+        
+</head>
+<body>
+    <nav class="navbar">
+       <div class="logo">
+            <img src="https://www.shutterstock.com/image-vector/support-your-local-farmer-circular-600nw-2191709689.jpg" class="blink" alt="Logo">
+        </div>
+         <ul class="nav-links">
+             <li><a href="/farmer-landing">Home</a></li>
+            <li><a href="#" class="view-btn">Profile</a></li>
+           <li><a href="/market/farmer">Crop</a></li>
+            <li><a href="/find-buyer">Find Buyer</a></li>
+            <li><a href="/"><button class="logout-btn">Logout</button></a></li>
+        </ul>
+    </nav>
+   
+    <div class="buyer-list">
+        {{#each buyers}}
+        <div class="buyer-card">
+            <h2>{{this.name}}</h2>
+            <p>Reference ID: {{this.buyerId}}</p> <!-- Unique identifier for the buyer -->
+            <p>Buying Preference: {{this.buyingPreference}}</p>
+             <p>Buying Quantity: {{this.buyingQuantity}}</p>
+            <p>Address: {{this.address}}</p>
+             <p>Added by: {{this.buyerEmail}}</p>
+            <a href="/chat"><button class="chat-btn">Chat</button></a> <!-- Button to initiate chat -->
+        </div>
+        {{/each}}
+    </div>
+
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Farmer's Hub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Chat functionality
+        const chatContainer = document.getElementById('chatContainer');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageButton = document.getElementById('sendMessage');
+        let currentBuyerId = ''; // Store the current buyer's ID
+
+        // Show chatboard when a chat button is clicked
+        document.querySelectorAll('.chat-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                currentBuyerId = this.getAttribute('data-buyer-id'); // Get the buyer's ID
+                chatContainer.style.display = 'flex'; // Show chat container
+                chatMessages.innerHTML = ''; // Clear previous messages
+                chatMessages.innerHTML += '<div>Farmer: Hi, how can I help you?</div>'; // Initial message
+            });
+        });
+
+        sendMessageButton.addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const messageText = chatInput.value.trim();
+            if (messageText) {
+                addMessage('Farmer', messageText);
+                chatInput.value = ''; // Clear input field
+
+                // Send message to the backend
+                fetch('/api/send-message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        buyerId: currentBuyerId, // Send the buyer's ID instead of email
+                        message: messageText
+                    })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json(); // Assume we get a JSON response with a success message
+                }).then(data => {
+                    console.log('Message sent successfully:', data);
+                }).catch(error => {
+                    console.error('Error sending message:', error);
+                });
+            }
+        }
+
+        function addMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = `${sender}: ${message}`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+        }
+    </script>
+</body>
+</html>

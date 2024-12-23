@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Market</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/farmer.css">
+    
+</head>
+<body>
+     <!-- Navigation Bar -->
+    <nav class="navbar">
+       <div class="logo">
+            <img src="https://www.shutterstock.com/image-vector/support-your-local-farmer-circular-600nw-2191709689.jpg" class="blink" alt="Logo">
+        </div>
+         <ul class="nav-links">
+             <li><a href="/farmer-landing">Home</a></li>
+            <li><a href="" class="view-btn">Profile</a></li>
+           
+           <li><a href="/market/farmer">Crop</a></li>
+            <li><a href="/find-buyer">Find-Buyer</a></li>
+            <li><a href="/logout"><button class="logout-btn">Logout</button></a></li>
+        </ul>
+    </nav>
+     
+   <div>
+    <form action="/market/farmer/add-crop" method="POST">
+        <h2>Add Crop</h2>
+
+        <div class="form-group">
+            <label for="cropName">Crop Name:</label>
+            <input type="text" name="cropName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" required>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price (per unit):</label>
+            <input type="number" name="price" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea name="description" required></textarea>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-animated">Add Crop</button>
+            
+        </div>
+    </form>
+    <!-- Button to view crops -->
+    <button onclick="document.getElementById('cropTable').style.display='block'" class="btn btn-edit">View Your Crops</button>
+
+    <!-- List of Crops with Edit and Delete Options in a Table -->
+    <div id="cropTable" style="display:none;">
+        <h2>Your Crops</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Crop Name</th>
+                    <th>Quantity</th>
+                    <th>Price (per unit)</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each crops}}
+                <tr>
+                    <td>{{this.cropName}}</td>
+                    <td>{{this.quantity}}</td>
+                    <td>₹{{this.price}}</td>
+                    <td>{{this.description}}</td>
+                    <td>
+                        <form action="/market/farmer/edit-crop/{{this._id}}" method="GET" style="display:inline;">
+                            <button type="submit" class="btn btn-edit">Edit</button>
+                        </form>
+                        <form action="/market/farmer/delete-crop/{{this._id}}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Farmer's Hub. All Rights Reserved.</p>
+    </footer>
+  
+
+</body>
+</html>

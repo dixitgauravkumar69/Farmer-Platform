@@ -1,0 +1,39 @@
+<!-- views/admin.hbs -->
+<h1>Admin Panel</h1>
+
+<!-- Form to Add New FAQ -->
+<form action="/admin/add" method="POST">
+    <label for="question">Question:</label>
+    <input type="text" id="question" name="question" required />
+
+    <label for="answer">Answer:</label>
+    <textarea id="answer" name="answer" required></textarea>
+
+    <button type="submit">Add FAQ</button>
+</form>
+
+<hr>
+
+<!-- Display Existing FAQs in Table Format -->
+<h2>Existing Questions and Answers</h2>
+
+{{#if faqs.length}}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each faqs}}
+                <tr>
+                    <td>{{this.question}}</td>
+                    <td>{{this.answer}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p>No FAQs available yet. Add some!</p>
+{{/if}}

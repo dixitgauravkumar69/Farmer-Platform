@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+    /* Card container styles */
+      .card-container {
+          display: flex;
+          flex-wrap: wrap; /* Allow cards to wrap to the next line */
+          justify-content: space-around; /* Space out cards evenly */
+          margin: 16px; /* Add margin to the container */
+      }
+
+      /* Card styles */
+      .card {
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 16px;
+          margin: 16px;
+          transition: transform 0.2s;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          background-color: #f9f9f9;
+          width: calc(30% - 32px); /* Responsive width for cards */
+          min-width: 250px; /* Minimum width to maintain readability */
+          box-sizing: border-box; /* Include padding and border in width */
+          display: flex; /* Use flex to align items */
+          flex-direction: column; /* Align content vertically */
+          justify-content: flex-start; /* Start from the top */
+          height: auto; /* Allow height to adjust based on content */
+      }
+
+      .card:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+       <div class="logo">
+            <img src="https://www.shutterstock.com/image-vector/support-your-local-farmer-circular-600nw-2191709689.jpg" class="blink" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/buyer-landing">Home</a></li>
+            <li><a href="" class="view-btn">Profile</a></li>
+           
+           <li><a href="/market/buyer">Self_information</a></li>
+            <li><a href="/find-Crop">View_crop</a></li>
+            <li><a href="/logout"><button class="logout-btn">Logout</button></a></li>
+        </ul>
+    </nav>
+
+    <div class="card-container">
+    {{#each crops}}
+      <div class="card">
+        <h2>{{this.cropName}}</h2>
+        <p>Quantity: {{this.quantity}} units</p>
+        <p>Price: ${{this.price}} per unit</p>
+        <p>Description: {{this.description}}</p>
+        <p>Added by: {{this.farmerEmail}}</p>
+      </div>
+    {{/each}}
+  </div>
+  <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Farmer's Hub. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
